@@ -1,16 +1,24 @@
-AutoJudge: ML Problem Difficulty Predictor
+# ⚖️ AutoJudge: Problem Difficulty Predictor
 
-AutoJudge is an intelligent dashboard that uses Machine Learning to analyze programming problems. It predicts whether a problem is Easy, Medium, or Hard and assigns a complexity score from 1–10.
+AutoJudge is an intelligent machine learning dashboard designed to analyze programming problem descriptions. The system predicts the categorical difficulty level (Easy, Medium, Hard) and assigns a numerical complexity score (1–10) based on textual and algorithmic features.
 
-How to Use
-1. Clone the repository to your local machine.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Train the models: Run `python src/train.py`. 
-   Note: The `classifier.pkl` and `regressor.pkl` files are not included in this repository due to GitHub's 100MB file size limit. Running this script will generate them locally on your computer.
-4. Launch the Dashboard: `streamlit run app.py`
+## 🛠️ Technical Approach
+The core engine evaluates problems using a **Hybrid Feature Matrix**:
+* **NLP Vectorization**: Utilizes word-level **TF-IDF** to capture the significance of algorithmic phrasing and keywords.
+* **Domain Feature Extraction**: Custom logic identifies specific markers like `recursion`, `dynamic programming`, and data structure frequencies.
+* **Machine Learning Models**: Employs **ExtraTrees** (Extremely Randomized Trees) for both the classification and regression tasks to ensure robust and accurate predictions.
 
-Technology Stack
-Language: Python
-ML Library: Scikit-Learn (ExtraTrees Classifier & Regressor)
-NLP: TF-IDF Vectorization
-UI: Streamlit
+## 📂 Project Structure
+The repository is organized as:
+* **`app.py`**: The primary Streamlit dashboard for real-time user interaction.
+* **`src/`**: Contains `train.py` for model training and `features.py` for feature engineering logic.
+* **`data/`**: Includes the `raw/` dataset and `processed/` TF-IDF vectorizer.
+* **`requirements.txt`**: Lists all necessary Python libraries to reproduce the environment.
+
+## 💻 How to Run
+1. **Clone the repository**
+2. **Install dependencies**:  pip install -r requirements.txt
+3. **Train the Models Locally**: The trained model files (classifier.pkl and regressor.pkl) are not included in this repository because they exceed GitHub's 100MB file size limit. Run the training script to generate them on your machine:  python src/train.py
+4. **Launch the Dashboard**:   streamlit run app.py
+   
+  
